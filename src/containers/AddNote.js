@@ -37,8 +37,8 @@ const AddNote = ({ dispatch }) => {
                     }
                 }
             >
-                <InputField placeholder="Add new note" ref={node => (input = node)}></InputField>
-                <Fab type="submit" color="secondary" variant="extended" aria-label="add">
+                <InputField placeholder='Add new note' ref={node => (input = node)}></InputField>
+                <Fab type='submit' color='secondary' variant='extended' aria-label='add'>
                     <AddIcon />
                 </Fab>
             </form >

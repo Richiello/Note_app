@@ -27,7 +27,7 @@ export const EditModal = ({ dispatch, open, close, text, id }) => {
                         }}
                     >
                         <TextField value={newText} onChange={handleChange} cols={40} rows={10} />
-                        <Button variant="contained" type="submit" color="primary">
+                        <Button variant='contained' type='submit' color='primary'>
                             Save Note
                         </Button>
                     </form>

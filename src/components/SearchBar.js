@@ -12,7 +12,7 @@ const SearchField = styled(`input`)({
 
 const SearchBar = ({ onChange, searchText }) => (
     <SearchField
-        placeholder="Search"
+        placeholder='Search'
         onChange={e => onChange(e.target.value)}
         value={searchText} />
 )
