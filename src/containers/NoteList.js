@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import Note from './Note'
+import Note from '../components/Note'
 import { NoteContainer } from '../styles/styles'
 import { connect } from 'react-redux'
-import SearchBar from '../containers/SearchBar'
+import SearchBar from '../components/SearchBar'
 
 const NoteList = ({ notes }) => {
 

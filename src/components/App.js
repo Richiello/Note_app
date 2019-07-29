@@ -1,7 +1,7 @@
 import React from 'react'
 import AddNote from '../containers/AddNote'
 import Divider from '@material-ui/core/Divider'
-import NoteList from './NoteList'
+import NoteList from '../containers/NoteList'
 
 const App = () => (
     <div>
