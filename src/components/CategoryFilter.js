@@ -1,6 +1,7 @@
 import React from 'react'
 import { styled } from '@material-ui/styles'
 import { categoryFilters } from '../actions'
+import FilterLink from './FilterLink'
 
 const HorizontalList = styled(`ul`)({
     display: 'flex',
@@ -23,9 +24,9 @@ const CategoryFilter = () => {
         <HorizontalList>
             {Object.keys(categoryFilters).map(a =>
                 <li key={a}>
-                    <a>
+                    <FilterLink filter={categoryFilters[a]}>
                         {categoryFilters[a]}
-                    </a>
+                    </FilterLink>
                 </li>
             )}
         </HorizontalList>
