@@ -16,3 +16,15 @@ export const editNote = (id, text) => ({
     id,
     text
 })
+
+export const setCategoryFilter = filter => ({
+    type: 'SET_CATEGORY_FILTER',
+    filter
+})
+
+export const categoryFilters = {
+    SHOW_ALL: 'ALL',
+    SHOW_WORK: 'WORK',
+    SHOW_HOME: 'HOME',
+    SHOW_FUN: 'FUN'
+}
