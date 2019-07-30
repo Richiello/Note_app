@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 import notes from './notes'
-import categories from './categories'
+import categoryFilter from './categories'
 
 export default combineReducers({
     notes,
-    categories
+    categoryFilter
 })

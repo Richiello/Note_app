@@ -4,6 +4,7 @@ import Note from '../components/Note'
 import { NoteContainer } from '../styles/styles'
 import { connect } from 'react-redux'
 import SearchBar from '../components/SearchBar'
+import CategoryFilter from '../components/CategoryFilter'
 
 const NoteList = ({ notes }) => {
 
@@ -27,6 +28,7 @@ const NoteList = ({ notes }) => {
                 searchText={searchValue}
                 onChange={handleChange}
             />
+            <CategoryFilter />
             <NoteContainer>
                 {filteredNotes.map(n => (
                     <Note key={n.id} note={n} />
