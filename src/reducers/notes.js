@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
     id: 0,
     text: 'My first note',
+    category: 'WORK'
 }
 
 const notes = (state = [INITIAL_STATE], action) => {
@@ -11,6 +12,7 @@ const notes = (state = [INITIAL_STATE], action) => {
                 {
                     id: action.id,
                     text: action.text,
+                    category: 'HOME'
                 }
             ]
         case 'EDIT_NOTE':

@@ -2,7 +2,6 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import Note from '../components/Note'
 import { NoteContainer } from '../styles/styles'
-import { connect } from 'react-redux'
 import SearchBar from '../components/SearchBar'
 import CategoryFilter from '../components/CategoryFilter'
 
@@ -44,13 +43,7 @@ NoteList.propTypes = {
             id: PropTypes.number.isRequired,
             text: PropTypes.string.isRequired
         }).isRequired
-    ).isRequired,
+    ).isRequired
 }
 
-const mapStateToProps = state => ({
-    notes: state.notes
-})
-
-export default connect(
-    mapStateToProps
-)(NoteList)
+export default NoteList
