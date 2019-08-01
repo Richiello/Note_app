@@ -1,7 +1,8 @@
 const INITIAL_STATE = {
     id: 0,
     text: 'My first note',
-    category: 'WORK'
+    category: 'WORK',
+    createdAt: '1 Aug 2019 14:30'
 }
 
 const notes = (state = [INITIAL_STATE], action) => {
@@ -12,7 +13,8 @@ const notes = (state = [INITIAL_STATE], action) => {
                 {
                     id: action.id,
                     text: action.text,
-                    category: action.category
+                    category: action.category,
+                    createdAt: action.createdAt
                 }
             ]
         case 'EDIT_NOTE':

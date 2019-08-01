@@ -8,6 +8,7 @@ import { categoryFilters } from '../actions'
 import InputLabel from '@material-ui/core/InputLabel'
 import Select from '@material-ui/core/Select'
 import ModalAdd from '../components/Modal'
+import moment from 'moment'
 
 const InputField = styled(`input`)({
     width: '300px',
@@ -34,12 +35,14 @@ const AddNote = ({ dispatch }) => {
         setShowModal(!showModal)
     }
 
+    const newTimeStamp = moment().format('D MMM YYYY HH:mm')
+
     let input
 
     return (
         <Fragment>
             <Fab onClick={() => toggleModal()} type='submit' color='secondary' variant='extended' aria-label='add'>
-                <AddIcon />
+                Add new note <AddIcon />
             </Fab>
             {showModal && <ModalAdd show={toggleModal}>
                 <form
@@ -50,8 +53,7 @@ const AddNote = ({ dispatch }) => {
                             if (!noteText.trim()) {
                                 return
                             }
-                            dispatch(addNote(noteText, category))
-                            console.log(category)
+                            dispatch(addNote(noteText, category, newTimeStamp))
                             noteText = ''
                             toggleModal()
                         }

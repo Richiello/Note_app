@@ -9,6 +9,14 @@ import EditModal from '../containers/EditModal'
 import { deleteNote } from '../actions'
 import { NoteCard, CardFooter } from '../styles/styles'
 import { connect } from 'react-redux'
+import { styled } from '@material-ui/styles'
+
+const TimeStamp = styled(`p`)({
+    fontSize: '11px',
+    color: 'grey',
+    fontStyle: 'italic',
+    textAlign: 'right'
+})
 
 const Note = ({ note, dispatch }) => {
     const [activeNote, setActiveNote] = useState()
@@ -27,9 +35,12 @@ const Note = ({ note, dispatch }) => {
         <Fragment>
             <NoteCard key={note.id}>
                 <CardActionArea>
-                    <CardContent>
+                    <TimeStamp>
+                        {note.createdAt}
+                    </TimeStamp>
+                    <p>
                         {note.text}
-                    </CardContent>
+                    </p>
                 </CardActionArea>
                 <CardFooter>
                     <Fab size='small' aria-label='delete' >
