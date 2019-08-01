@@ -3,9 +3,6 @@ import { connect } from 'react-redux'
 import { categoryFilters } from '../actions'
 
 const VisibleNotes = (notes, filter) => {
-    console.log(notes.filter(n =>
-        n.category === categoryFilters.SHOW_HOME
-    ), '******')
     switch (filter) {
         case categoryFilters.SHOW_ALL:
             return notes

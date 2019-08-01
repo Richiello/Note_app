@@ -12,7 +12,7 @@ const notes = (state = [INITIAL_STATE], action) => {
                 {
                     id: action.id,
                     text: action.text,
-                    category: 'HOME'
+                    category: action.category
                 }
             ]
         case 'EDIT_NOTE':

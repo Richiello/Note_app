@@ -1,9 +1,10 @@
 let NoteId = 1
 
-export const addNote = text => ({
+export const addNote = (text, category) => ({
     type: 'ADD_NOTE',
     id: NoteId++,
-    text
+    text,
+    category
 })
 
 export const deleteNote = id => ({

@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useState, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { addNote } from '../actions'
 import Fab from '@material-ui/core/Fab'
 import AddIcon from '@material-ui/icons/Add'
 import { styled } from '@material-ui/styles'
+import { categoryFilters } from '../actions'
+import InputLabel from '@material-ui/core/InputLabel'
+import Select from '@material-ui/core/Select'
+import ModalAdd from '../components/Modal'
 
 const InputField = styled(`input`)({
     width: '300px',
@@ -19,30 +23,57 @@ const InputField = styled(`input`)({
 })
 
 const AddNote = ({ dispatch }) => {
+    const [category, setCategory] = useState('Choose category')
+    const [showModal, setShowModal] = useState(false)
+
+    const onchange = (event) => {
+        setCategory(event.target.value)
+    }
+
+    const toggleModal = () => {
+        setShowModal(!showModal)
+    }
+
     let input
 
     return (
-        <div style={{
-            display: 'flex', justifyContent: 'center', width: '100%'
-        }}>
-            < form
-                onSubmit={
-                    e => {
-                        e.preventDefault()
-                        if (!input.value.trim()) {
-                            return
+        <Fragment>
+            <Fab onClick={() => toggleModal()} type='submit' color='secondary' variant='extended' aria-label='add'>
+                <AddIcon />
+            </Fab>
+            {showModal && <ModalAdd show={toggleModal}>
+                <form
+                    onSubmit={
+                        e => {
+                            let noteText = input.value
+                            e.preventDefault()
+                            if (!noteText.trim()) {
+                                return
+                            }
+                            dispatch(addNote(noteText, category))
+                            console.log(category)
+                            noteText = ''
+                            toggleModal()
                         }
-                        dispatch(addNote(input.value))
-                        input.value = ''
                     }
-                }
-            >
-                <InputField placeholder='Add new note' ref={node => (input = node)}></InputField>
-                <Fab type='submit' color='secondary' variant='extended' aria-label='add'>
-                    <AddIcon />
-                </Fab>
-            </form >
-        </div >
+                >
+                    <h4>Add new note:</h4>
+                    <InputField placeholder='* Text' ref={node => (input = node)} />
+                    < br />  < br />
+                    <InputLabel >Category</InputLabel>
+                    <Select value={category} onChange={e => onchange(e)} native >
+                        <option value="" />
+                        {Object.keys(categoryFilters).map((o, index) =>
+                            <option key={index} value={categoryFilters[o]}>{categoryFilters[o]}</option>
+                        )}
+                    </Select>
+                    < br />  < br />
+                    <button type='submit'>
+                        Save
+                    </button>
+                </form >
+            </ModalAdd>}
+        </Fragment>
     )
 }
 

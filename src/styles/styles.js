@@ -1,6 +1,5 @@
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
-import Modal from '@material-ui/core/Modal'
 import { styled } from '@material-ui/styles'
 
 export const NoteCard = styled(Card)({
@@ -31,19 +30,31 @@ export const CardFooter = styled(CardActions)({
     right: '10px',
 })
 
-export const ModalContainer = styled(Modal)({
-    position: 'absolute',
+export const ModalContainer = styled(`div`)({
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    background: 'rgba(0, 0, 0, 0.6)',
+    zIndex: 99999
+})
+
+export const AddModal = styled(`div`)({
+    position: 'fixed',
     minWidth: 400,
-    width: 'fit-content',
-    height: 'fit-content',
+    minHeight: 200,
+    display: 'flex',
     margin: 'auto',
     backgroundColor: '#dce8e6',
     color: '#fff',
     borderRadius: '2%',
     outline: 'none',
-    justifyContent: 'center',
-    display: 'flex',
-    padding: '10px'
+    padding: '10px',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%,-50%)'
+
 })
 
 export const TextField = styled(`textarea`)({

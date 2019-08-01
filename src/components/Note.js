@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardContent from '@material-ui/core/CardContent'
@@ -11,35 +11,37 @@ import { NoteCard, CardFooter } from '../styles/styles'
 import { connect } from 'react-redux'
 
 const Note = ({ note, dispatch }) => {
-    const [open, setOpen] = React.useState(false)
-    const [activeId, setActiveId] = useState()
+    const [activeNote, setActiveNote] = useState()
+    const [showModal, setShowModal] = useState(false)
 
-    const showModal = (id) => {
-        setOpen(true)
-        setActiveId(id)
+    const setActiveId = (id) => {
+        toggleModal()
+        setActiveNote(id)
     }
 
-    const closeModal = (e) => {
-        setOpen(false)
+    const toggleModal = () => {
+        setShowModal(!showModal)
     }
 
     return (
-        <NoteCard key={note.id}>
-            <CardActionArea>
-                <CardContent>
-                    {note.text}
-                </CardContent>
-            </CardActionArea>
-            <CardFooter>
-                <Fab size='small' aria-label='delete' >
-                    <EditIcon onClick={() => showModal(note.id)} />
-                    {activeId === note.id && <EditModal text={note.text} id={note.id} open={open} close={closeModal} />}
-                </Fab>
-                <Fab size='small' aria-label='delete' onClick={() => dispatch(deleteNote(note.id))} >
-                    <DeleteIcon />
-                </Fab>
-            </CardFooter>
-        </NoteCard>
+        <Fragment>
+            <NoteCard key={note.id}>
+                <CardActionArea>
+                    <CardContent>
+                        {note.text}
+                    </CardContent>
+                </CardActionArea>
+                <CardFooter>
+                    <Fab size='small' aria-label='delete' >
+                        <EditIcon onClick={() => setActiveId(note.id)} />
+                    </Fab>
+                    <Fab size='small' aria-label='delete' onClick={() => dispatch(deleteNote(note.id))} >
+                        <DeleteIcon />
+                    </Fab>
+                </CardFooter>
+            </NoteCard>
+            {activeNote === note.id && <EditModal show={showModal} toggleModal={toggleModal} text={note.text} id={note.id} />}
+        </Fragment>
     )
 }
 

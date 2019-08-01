@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, Fragment } from 'react'
 import { editNote } from '../actions'
 import { connect } from 'react-redux'
-import Button from '@material-ui/core/Button';
-import { ModalContainer, TextField } from '../styles/styles'
+import { TextField } from '../styles/styles'
+import ModalAdd from '../components/Modal'
 
-export const EditModal = ({ dispatch, open, close, text, id }) => {
-
+export const EditModal = ({ dispatch, text, id, show, toggleModal }) => {
     const [newText, setNewText] = useState(text)
 
     const handleChange = (event) => {
@@ -13,27 +12,26 @@ export const EditModal = ({ dispatch, open, close, text, id }) => {
     }
 
     return (
-        <div>
-            <ModalContainer
-                open={open}
-                onClose={close}
-            >
-                <div style={{ width: '100%', textAlign: 'center', backgroundColor: 'white' }}>
-                    <form
-                        onSubmit={e => {
-                            e.preventDefault()
-                            dispatch(editNote(id, newText))
-                            close()
-                        }}
-                    >
-                        <TextField value={newText} onChange={handleChange} cols={40} rows={10} />
-                        <Button variant='contained' type='submit' color='primary'>
-                            Save Note
-                        </Button>
-                    </form>
-                </div>
-            </ModalContainer>
-        </div>
+        <Fragment>
+            {
+                show && <ModalAdd show={toggleModal}>
+                    <div style={{ width: '100%', textAlign: 'center', backgroundColor: 'white' }}>
+                        <form
+                            onSubmit={e => {
+                                e.preventDefault()
+                                dispatch(editNote(id, newText))
+                                toggleModal()
+                            }}
+                        >
+                            <TextField value={newText} onChange={handleChange} cols={40} rows={10} />
+                            <button type='submit'>
+                                Save
+                            </button>
+                        </form>
+                    </div>
+                </ModalAdd>
+            }
+        </Fragment>
     )
 }
 
