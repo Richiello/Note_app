@@ -6,6 +6,7 @@ const CloseButton = styled(`button`)({
     position: 'absolute',
     margin: '5px',
     right: 0,
+    top: 0,
     border: 'none',
     background: 'none',
     color: 'red',
