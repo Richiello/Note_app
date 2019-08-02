@@ -24,10 +24,39 @@ export const NoteContainer = styled(`div`)({
     margin: '0 auto'
 })
 
+
+export const TextField = styled(`textarea`)({
+    width: '100%',
+    padding: '15px',
+    display: 'inline-block',
+    border: '1px solid #ccc',
+    borderRadius: '4px',
+    boxSizing: 'border-box',
+    height: '200px',
+    resize: 'none',
+    '&:focus': {
+        outline: 0
+    }
+})
+
 export const CardFooter = styled(CardActions)({
     position: 'absolute',
     bottom: '10px',
     right: '10px',
+})
+
+export const CardHeader = styled(`div`)({
+    display: 'flex',
+    justifyContent: 'space-between',
+    margin: '30px 0 20px',
+    '& p': {
+        margin: 0,
+    }
+})
+
+export const CardContent = styled(`div`)({
+    display: 'block',
+    textAlign: 'center'
 })
 
 export const ModalContainer = styled(`div`)({
@@ -41,25 +70,28 @@ export const ModalContainer = styled(`div`)({
 })
 
 export const AddModal = styled(`div`)({
-    position: 'fixed',
+    position: 'absolute',
     minWidth: 400,
     minHeight: 200,
-    display: 'flex',
-    margin: 'auto',
     backgroundColor: '#dce8e6',
-    color: '#fff',
+    color: '#545454',
     borderRadius: '2%',
-    outline: 'none',
-    padding: '10px',
+    padding: '15px',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%,-50%)'
-
 })
 
-export const TextField = styled(`textarea`)({
-    outline: 'none',
+export const Button = styled(`button`)({
+    width: '150px',
+    margin: '15px 0 5px',
+    height: '40px',
+    backgroundColor: '#67aba0',
+    color: 'white',
     border: 'none',
-    display: 'block',
-    margin: '10px auto'
+    cursor: 'pointer',
+    borderRadius: '25px',
+    '&:focus, :active': {
+        outline: 'none'
+    }
 })
