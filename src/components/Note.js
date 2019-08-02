@@ -13,7 +13,7 @@ import { styled } from '@material-ui/styles'
 
 const TimeStamp = styled(`p`)({
     fontSize: '11px',
-    color: 'grey',
+    color: '#f9f9f9',
     fontStyle: 'italic',
     textAlign: 'right'
 })
