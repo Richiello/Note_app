@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from 'react'
 import { editNote } from '../actions'
 import { connect } from 'react-redux'
-import { TextField } from '../styles/styles'
+import { TextField, Button } from '../styles/styles'
 import ModalAdd from '../components/Modal'
 
 export const EditModal = ({ dispatch, text, id, show, toggleModal }) => {
@@ -24,9 +24,7 @@ export const EditModal = ({ dispatch, text, id, show, toggleModal }) => {
                             }}
                         >
                             <TextField value={newText} onChange={handleChange} cols={40} rows={10} />
-                            <button type='submit'>
-                                Save
-                            </button>
+                            <Button type='submit'> Save </Button>
                         </form>
                     </div>
                 </ModalAdd>
