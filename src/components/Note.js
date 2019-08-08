@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import Fab from '@material-ui/core/Fab'
@@ -31,7 +31,7 @@ const Note = ({ note, dispatch }) => {
     }
 
     return (
-        <Fragment>
+        <>
             <NoteCard key={note.id}>
                 <CardActionArea>
                     <TimeStamp>
@@ -51,7 +51,7 @@ const Note = ({ note, dispatch }) => {
                 </CardFooter>
             </NoteCard>
             {activeNote === note.id && <EditModal show={showModal} toggleModal={toggleModal} text={note.text} id={note.id} />}
-        </Fragment>
+        </>
     )
 }
 

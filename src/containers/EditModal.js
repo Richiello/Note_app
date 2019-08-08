@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState } from 'react'
 import { editNote } from '../actions'
 import { connect } from 'react-redux'
 import { TextField, Button } from '../styles/styles'
@@ -12,7 +12,7 @@ export const EditModal = ({ dispatch, text, id, show, toggleModal }) => {
     }
 
     return (
-        <Fragment>
+        <>
             {
                 show && <ModalAdd show={toggleModal}>
                     <div style={{ width: '100%', textAlign: 'center', backgroundColor: 'white' }}>
@@ -29,7 +29,7 @@ export const EditModal = ({ dispatch, text, id, show, toggleModal }) => {
                     </div>
                 </ModalAdd>
             }
-        </Fragment>
+        </>
     )
 }
 

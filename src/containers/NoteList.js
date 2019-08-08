@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import Note from '../components/Note'
 import { NoteContainer } from '../styles/styles'
@@ -22,7 +22,7 @@ const NoteList = ({ notes }) => {
     let filteredNotes = filterNotes()
 
     return (
-        <Fragment>
+        <>
             <SearchBar
                 searchText={searchValue}
                 onChange={handleChange}
@@ -33,7 +33,7 @@ const NoteList = ({ notes }) => {
                     <Note key={n.id} note={n} />
                 ))}
             </NoteContainer >
-        </Fragment>
+        </>
     )
 }
 

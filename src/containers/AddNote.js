@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { addNote } from '../actions'
 import Fab from '@material-ui/core/Fab'
@@ -36,7 +36,7 @@ const AddNote = ({ dispatch }) => {
     let input
 
     return (
-        <Fragment>
+        <>
             <Fab onClick={() => toggleModal()} type='submit' color='secondary' variant='extended' aria-label='add'>
                 Add new note <AddIcon />
             </Fab>
@@ -57,7 +57,7 @@ const AddNote = ({ dispatch }) => {
                     </CardContent>
                 </form >
             </ModalAdd>}
-        </Fragment>
+        </>
     )
 }
 
