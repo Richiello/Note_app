@@ -10,7 +10,7 @@ import moment from 'moment'
 
 
 const AddNote = ({ dispatch }) => {
-    const [category, setCategory] = useState('Choose category')
+    const [category, setCategory] = useState('ALL')
     const [showModal, setShowModal] = useState(false)
 
     const onchange = (event) => {
@@ -45,7 +45,7 @@ const AddNote = ({ dispatch }) => {
                     <CardHeader>
                         <p>Add new note:</p>
                         <select onChange={e => onchange(e)} >
-                            <option value="" disabled selected> Choose category </option>
+                            <option value="" default> Choose category </option>
                             {Object.keys(categoryFilters).map((o, index) =>
                                 <option key={index} value={categoryFilters[o]}>{categoryFilters[o]}</option>
                             )}
